@@ -3,7 +3,7 @@ title: Reasoning Event Emitter Filter
 author: Raphael Wong
 author_url: https://github.com/raphael1-w
 description: Emits a "Thinking..." event on inlet, then updates it with the elapsed time (in sec or min/sec) when the first stream chunk arrives.
-required_open_webui_version: 0.5.0
+required_open_webui_version: 0.5.17
 version: 1.0.0
 licence: GNU General Public License v3.0
 """
