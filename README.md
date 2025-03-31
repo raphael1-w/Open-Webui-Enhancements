@@ -1,4 +1,4 @@
-# open-webui-enhancements
+# Open Webui Enhancements
 
 This repository contains enhancements for the Open WebUI project, implemented as custom functions and tools.
 
