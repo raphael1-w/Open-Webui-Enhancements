@@ -5,7 +5,7 @@ author_url: https://github.com/raphael1-w
 description: This tool allows the LLM to update the user's memory list, including adding new memories and consolidating existing ones.
 required_open_webui_version: 0.5.0
 version: 0.5.0
-licence: MIT
+licence: GNU General Public License v3.0
 """
 
 from typing import List, Literal, Optional, Callable, Any

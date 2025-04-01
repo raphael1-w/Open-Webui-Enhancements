@@ -6,7 +6,7 @@ description: Search the web for information.
 required_open_webui_version: 0.5.0
 requirements: httpx, lxml-html-clean
 version: 0.9.0
-licence: MIT
+licence: GNU General Public License v3.0
 """
 
 import httpx
