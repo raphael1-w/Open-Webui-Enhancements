@@ -12,7 +12,7 @@ This repository contains custom functions and tools for Open WebUI.
 ### Functions
 
 *   **Memory Injection Filter**: [Memory-Injection-Filter.py](functions/Memory-Injection-Filter.py) - Injects user memories into the system prompt, allowing selection of which model has access to memories, even if the user's memories setting is off.
-*   **Native Tool Call Formatting Outlet**: [Native-tool-call-formatting-outlet.py](functions/Native-tool-call-formatting-outlet.py) - Simplifies the `<details>` tag in native tool call responses to avoid confusing the model in subsequent messages.
+*   **Native Tool Call Formatting Outlet**: [Native-tool-call-formatting-outlet.py](functions/Native-tool-call-formatting-outlet.py) - Removes the `<details>` tag in native tool call responses to avoid confusing the model in subsequent messages.
 *   **Reasoning Injection Filter**: [Reasoning-injection.py](functions/Reasoning-injection.py) - Emits a "Thinking..." event on inlet, then updates it with the elapsed time (in sec or min/sec) when the first stream chunk arrives.
 
 ## License
