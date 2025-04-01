@@ -3,10 +3,10 @@ title: Lookup
 author: Raphael Wong
 author_url: https://github.com/raphael1-w
 description: Search the web for information.
-required_open_webui_version: 0.5.0
+required_open_webui_version: 0.6.0
 requirements: httpx, lxml-html-clean
-version: 0.9.0
-licence: GNU General Public License v3.0
+version: 0.9.1
+licence: MIT
 """
 
 import httpx
@@ -62,24 +62,6 @@ class Tools:
         search_queries = " | ".join(queries)
         output += f"Success\n"  # Add query context
 
-        tool_tip_content = f"""Search queries: {search_queries}
-        Number of results per search queries: {number_of_results_per_query} """
-
-        await __event_emitter__(
-            {
-                "type": "citation",
-                "data": {
-                    "document": [tool_tip_content],
-                    "metadata": [
-                        {"source": "Lookup"},
-                    ],
-                    "source": {
-                        "name": "🔎 Lookup",
-                    },
-                },
-            }
-        )
-
         seen_urls = {}  # Hashmap to store seen URLs
         duplicate_results = 0
         content_citations_list = []
@@ -119,10 +101,8 @@ class Tools:
 
                                 citation_number = result_count + 1
 
-                                block_quote += (
-                                    f"> {citation_number}. [{title}]({url})\n"
-                                )
-                                block_quote += f"> {content}\n"
+                                block_quote += f"{citation_number}. [{title}]({url})\n"
+                                block_quote += f"{content}\n"
                                 result_count += 1
 
                                 await __event_emitter__(
@@ -158,5 +138,24 @@ class Tools:
 
         if duplicate_results > 0:
             output += f"\n> {duplicate_results} results omitted. "
+
+        tool_tip_content = f"""Search {"query" if duplicate_results == 1 else "queries"}: {search_queries}
+        Number of results per search query: {number_of_results_per_query}
+        {duplicate_results} {"result" if duplicate_results == 1 else "results"} omitted """
+
+        await __event_emitter__(
+            {
+                "type": "citation",
+                "data": {
+                    "document": [tool_tip_content],
+                    "metadata": [
+                        {"source": "Lookup"},
+                    ],
+                    "source": {
+                        "name": "🔎 Lookup",
+                    },
+                },
+            }
+        )
 
         return output
